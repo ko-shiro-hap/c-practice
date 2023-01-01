@@ -13,9 +13,17 @@ int main(){
 
 	//ここで2次元配列の動的確保をする
     mat = (int**)malloc(sizeof(int*)*a);
+    if(mat == NULL){
+        printf("ERROR\n");
+        return NULL;
+    }
 
     for(i=0; i<b; i++) {
       mat[i] = (int*)malloc(sizeof(int)*b);
+      if(mat[i] == NULL){
+        printf("ERROR\n");
+        return NULL;
+      }
     }
 
 	//ここで2次元配列に数値を代入する
