@@ -1,3 +1,5 @@
+// 大文字と小文字を関係なく比較する
+
 # include <stdio.h>
 
 int fuzzyStrcmp(char s[], char t[]){
