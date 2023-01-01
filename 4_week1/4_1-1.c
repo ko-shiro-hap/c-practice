@@ -1,18 +1,18 @@
-# include <stdio.h>
+#include <stdio.h>
 
-int myStrlen(char s[]){
-  int i=0;
-  while(s[i] != '\0') {
-    i++;
+int main(void) {
+	int i;
+	char s[100];
+	scanf("%s",s);
+	printf("%s\n  -> ",s);
+	//ここを編集する
+	//何行になってもよいです
+  for(i=0; s[i]!='\0'; i++) {
+    if(s[i] == '1') {
+      s[i] = 'I';
+    }
   }
-  return i;
-}
-
-int main(){
-    int len;
-    char s[100];
-    scanf("%s",s);
-    len = myStrlen(s);
-    printf("%s -> %d\n",s,len);
-    return 0;
+	//
+	printf("%s\n",s);
+	return 0;
 }
