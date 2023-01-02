@@ -1,7 +1,6 @@
-// 単純挿入ソートを作る
+// バケットソートを作る
 
-// InsertionSort
-
+// BucketSort
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,23 +19,25 @@ void swap(int* a, int* b){
     *b = tmp;
 }
 
-void InsertionSort(int a[], int n){
-    int i,j,k,tmp;
-	int m; // 最小値を示すデータのインデックス
+#define MAX 1000000
+void BucketSort(int a[], int n){
+    int i,t;
+    int b[MAX];
+    //ここから下を書く
+    for(i=0; i<MAX; i++) {
+      b[i] = 0;
+  }
 
-    for(i=1;i<n;i++){
-    	// 未整理部分の最小を探す
-    	tmp = a[i];
-		for(j=0;j<i;j++){
-			if(tmp<a[j]){
-				break;
-			}
-		}
-		for(k=i;k>j;k--){
-			a[k]=a[k-1];
-		}
-		a[j]=tmp;
+  for(i=0; i<n; i++) {
+    b[a[i]] = 1;
+  }
+
+  t = 0;
+  for(i=0; i<MAX; i++) {
+    if(b[i] == 1) {
+      a[t++] = i;
     }
+  }
 }
 
 int main(void){
@@ -51,7 +52,7 @@ int main(void){
     for(i=0;i<n;i++){
         scanf("%d",&v[i]);
     }
-    InsertionSort(v,n);
+    BucketSort(v,n);
     printA(v,n);
     free(v);
     return 0;
